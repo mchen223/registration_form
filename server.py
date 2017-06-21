@@ -15,19 +15,19 @@ def index():
 @app.route('/process', methods=['POST'])
 def process():
     if len(request.form['email']) < 1:
-        flash(u"Error: Email needs to contain at least one letter or number and a domain.", 'email_error1')
+        flash(u"Error: Email needs to contain at least one letter, or number and a domain.", 'errors')
         return render_template('index.html')
     if not EMAIL_REGEX.match(request.form['email']):
-        flash(u"Invalid Email Address!", 'email_error2')
+        flash(u"Invalid Email Address!", 'errors')
         return render_template('index.html')
     if not request.form['first_name'].isalpha() or not request.form['last_name'].isalpha():
-        flash(u"Error: Name needs to contain at least one letter, and no numbers.", 'name_error')
+        flash(u"Error: Name needs to contain at least one letter, and no numbers.", 'errors')
         return render_template('index.html')
     if len(request.form['password']) < 9:
-        flash(u"Error: Passwords need to be at least 8 characters long.", 'password_error')
+        flash(u"Error: Passwords need to be at least 8 characters long.", 'errors')
         return render_template('index.html')
     if not request.form['password']==request.form['confirm_password']:
-        flash(u"Error: Password and password confirmation need to match.", 'password_error')
+        flash(u"Error: Password and password confirmation need to match.", 'errors')
         return render_template('index.html')
     else:
         flash(u"Thanks for submitting your information!", 'success')

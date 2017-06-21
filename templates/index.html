@@ -10,28 +10,7 @@
  </head>
 
  <body>
-   {% with errors = get_flashed_messages(category_filter=["email_error1"]) %}
-      {% if errors %}
-         {%- for msg in errors %}
-            <p id="flash">{{msg}}</p>
-         {% endfor -%}
-      {% endif %}
-   {% endwith %}
-   {% with errors = get_flashed_messages(category_filter=["email_error2"]) %}
-      {% if errors %}
-         {%- for msg in errors %}
-            <p id="flash">{{msg}}</p>
-         {% endfor -%}
-      {% endif %}
-   {% endwith %}
-   {% with errors = get_flashed_messages(category_filter=["name_error"]) %}
-      {% if errors %}
-         {%- for msg in errors %}
-            <p id="flash">{{msg}}</p>
-         {% endfor -%}
-      {% endif %}
-   {% endwith %}
-   {% with errors = get_flashed_messages(category_filter=["password_error"]) %}
+   {% with errors = get_flashed_messages(category_filter=["errors"]) %}
       {% if errors %}
          {%- for msg in errors %}
             <p id="flash">{{msg}}</p>

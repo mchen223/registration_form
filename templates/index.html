@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dojo Survey</title>
+    <meta name="Dojo Survey" content="Dojo Survey project">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/stylesheet.css') }}">
+
+ </head>
+
+ <body>
+   {% with errors = get_flashed_messages(category_filter=["email_error1"]) %}
+      {% if errors %}
+         {%- for msg in errors %}
+            <p id="flash">{{msg}}</p>
+         {% endfor -%}
+      {% endif %}
+   {% endwith %}
+   {% with errors = get_flashed_messages(category_filter=["email_error2"]) %}
+      {% if errors %}
+         {%- for msg in errors %}
+            <p id="flash">{{msg}}</p>
+         {% endfor -%}
+      {% endif %}
+   {% endwith %}
+   {% with errors = get_flashed_messages(category_filter=["name_error"]) %}
+      {% if errors %}
+         {%- for msg in errors %}
+            <p id="flash">{{msg}}</p>
+         {% endfor -%}
+      {% endif %}
+   {% endwith %}
+   {% with errors = get_flashed_messages(category_filter=["password_error"]) %}
+      {% if errors %}
+         {%- for msg in errors %}
+            <p id="flash">{{msg}}</p>
+         {% endfor -%}
+      {% endif %}
+   {% endwith %}
+    <form action="/process" method='post'>
+      <p>Email: <input type='text' name='email'></p>
+      <p>First Name: <input type='text' name='first_name'></p>
+      <p>Last Name: <input type='text' name='last_name'></p>
+      <p>Password: <input type='password' name='password'></p>
+      <p>Confirm Password: <input type='password' name='confirm_password'></p>
+      <input type='submit' value='Submit'></p>
+    </form>
+    {% with success = get_flashed_messages(category_filter=["success"]) %}
+      {% if success %}
+         {%- for msg in success %}
+            <p id="flash">{{msg}}</p>
+         {% endfor -%}
+      {% endif %}
+   {% endwith %}
+ </body>
+
+ </html>
